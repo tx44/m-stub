@@ -35,7 +35,7 @@ sftp-config.json
 .enb/tmp/
 src/libs/*
 src/bundles/*bundles/*/*.*
-!src/bundles/server.bundles/*/*.bemdecl.js
+!src/bundles/*.bundles/*/*.bemdecl.js
 !src/bundles/*bundles/.bem/*
 build
 public/favicons/dest
