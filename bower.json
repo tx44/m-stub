@@ -1,0 +1,14 @@
+{
+  "name": "m-stub",
+  "version": "0.3.0",
+  "description": "Manufactura project stub",
+  "bugs": "https://bitbucket.org/manufactura/project-stub/issues",
+  "ignore": [
+    ".bem/cache",
+    "node_modules",
+    "src/libs"
+  ],
+  "dependencies": {
+    "bem-components": "2.5.1"
+  }
+}

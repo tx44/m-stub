@@ -1,0 +1,45 @@
+block('root').replace()(function() {
+    var ctx = this.ctx;
+
+    // пробрасываем data вглубь по дереву
+    this.data = ctx.data;
+
+    // если задан context — требуется отрендерить не целую страницу, а лишь эту конкретную часть
+    if (ctx.context) return ctx.context;
+
+    // иначе рендерим весь page целиком
+    return {
+        block : 'page',
+        mods : { view : this.data.page.view, admin : this.data.page.admin },
+        title : this.data.page.title,
+        // favicon: '/favicon.ico',
+        head : [
+            // { block : 'favicons' },
+            { elem : 'meta', attrs : { name : 'description', content : this.data.page.description || '' }},
+            { elem : 'meta', attrs : { name : 'keywords', content : this.data.page.keywords || '' }},
+            { elem : 'meta', attrs : { name : 'format-detection', content : 'telephone=no' }}
+        ],
+        styles : [
+            { elem : 'css', url : '_' + this.data.page.assets + '.css' }
+        ],
+        scripts : [
+            { elem : 'js', url : '_' + this.data.page.assets + '.js' }
+            // {
+            //     block : 'yandex-metrica',
+            //     params : {
+            //         id : '0000000',
+            //         webvisor : true,
+            //         clickmap : true,
+            //         trackLinks : true,
+            //         accurateTrackBounce : true
+            //     }
+            // },
+            // {
+            //     block: 'google-analytics',
+            //     params: {
+            //         id: 'UA-XXXXXXXX-X'
+            //     }
+            // }
+        ]
+    };
+});

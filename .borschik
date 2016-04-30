@@ -1,0 +1,8 @@
+{
+    "freeze_paths": {
+        "**": "public/freeze"
+    },
+    "paths" : {
+        "public/freeze/": "/freeze/"
+    }
+}

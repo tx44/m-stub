@@ -1,0 +1,10 @@
+block('page').mod('view', 'index')(
+    content()(function() {
+        return [
+            {
+                elem : 'test',
+                content : 'Index page'
+            }
+        ]
+    })
+);
