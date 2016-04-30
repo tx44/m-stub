@@ -12,7 +12,7 @@ block('root').replace()(function() {
         block : 'page',
         mods : { view : this.data.page.view, admin : this.data.page.admin },
         title : this.data.page.title,
-        // favicon: '/favicon.ico',
+        favicon: '/favicons/default/favicon.ico',
         head : [
             // { block : 'favicons' },
             { elem : 'meta', attrs : { name : 'description', content : this.data.page.description || '' }},
@@ -20,10 +20,10 @@ block('root').replace()(function() {
             { elem : 'meta', attrs : { name : 'format-detection', content : 'telephone=no' }}
         ],
         styles : [
-            { elem : 'css', url : '_' + this.data.page.assets + '.css' }
+            { elem : 'css', url : '_project.css' }
         ],
         scripts : [
-            { elem : 'js', url : '_' + this.data.page.assets + '.js' }
+            { elem : 'js', url : '_project.js' }
             // {
             //     block : 'yandex-metrica',
             //     params : {

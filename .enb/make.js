@@ -14,7 +14,7 @@ var techs = {
         symlink : require('./techs/symlink-extra')
     },
     browserJs: require('enb-js/techs/browser-js'),
-    stylus : require('enb-stylus/techs/stylus'),
+    postCss : require('enb-postcss/techs/enb-postcss'),
     projectSymlinks : require('./techs/project-symlinks')
 };
 
@@ -49,10 +49,29 @@ module.exports = function(config) {
                 [techs.bem.files],
 
                 // CSS
-                [techs.stylus, {
-                    autoprefixer : {
-                        browser : ['last 2 versions', 'ie >= 10', 'opera 12.1']
-                    }
+                [techs.postCss, {
+                    comments : false,
+                    sourcemap : true,
+                    plugins : [
+                        require('postcss-import'),
+                        require('autoprefixer')({
+                            browsers : [
+                                'last 2 versions',
+                                'ie >= 10'
+                            ]
+                        }),
+                        require('postcss-simple-vars')({
+                            variables : {}
+                        }),
+                        require('postcss-custom-media'),
+                        require('postcss-nested'),
+                        require('postcss-easings'),
+                        require('postcss-color-function'),
+                        require('postcss-flexbugs-fixes'),
+                        require('postcss-reporter')({
+                            clearMessages : true
+                        })
+                    ]
                 }],
 
                 // JS
