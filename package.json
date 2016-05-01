@@ -29,7 +29,9 @@
     "postcss-import": "^8.1.0",
     "postcss-nested": "^1.0.0",
     "postcss-reporter": "^1.3.3",
-    "postcss-simple-vars": "^1.2.0"
+    "postcss-simple-vars": "^1.2.0",
+    "stylelint": "^6.2.2",
+    "stylelint-config-manufactura": "^0.2.0"
   },
   "scripts": {
     "clean": "rm -rf .enb/tmp build src/bundles/*.bundles/merged && ./node_modules/enb/bin/enb make clean",

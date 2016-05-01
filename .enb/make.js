@@ -53,6 +53,12 @@ module.exports = function(config) {
                     comments : false,
                     sourcemap : true,
                     plugins : [
+                        require('stylelint')(
+                            Object.assign({},
+                                require('stylelint-config-manufactura')
+                                // { ignoreFiles : 'src/bundles/**/*.css' }
+                            )
+                        ),
                         require('postcss-import'),
                         require('autoprefixer')({
                             browsers : [
