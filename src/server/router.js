@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+
 var config = require('./config');
 var Render = require('./render');
 var render = Render.render;

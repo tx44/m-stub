@@ -1,24 +1,25 @@
-var vm = require('vm'),
-    fs = require('fs'),
-    path = require('path'),
-    config = require('./config'),
-    bundleName = 'index',
-    pathToBundle = path.resolve('src/bundles/project.bundles', bundleName),
-    bemtreePath = path.join(pathToBundle, bundleName + '.bemtree.js'),
-    bemhtmlPath = path.join(pathToBundle, bundleName + '.bemhtml.js'),
-    BEMTREE = require(bemtreePath).BEMTREE,
-    BEMHTML = require(bemhtmlPath).BEMHTML,
+var fs = require('fs');
+var path = require('path');
+var vm = require('vm');
 
-    isDev = process.env.NODE_ENV === 'development',
-    useCache = !isDev,
-    cacheTTL = config.cacheTTL,
-    cache = {};
+var config = require('./config');
+var bundleName = 'index';
+var pathToBundle = path.resolve('src/bundles/project.bundles', bundleName);
+var bemtreePath = path.join(pathToBundle, bundleName + '.bemtree.js');
+var bemhtmlPath = path.join(pathToBundle, bundleName + '.bemhtml.js');
+var BEMTREE = require(bemtreePath).BEMTREE;
+var BEMHTML = require(bemhtmlPath).BEMHTML;
+
+var isDev = process.env.NODE_ENV === 'development';
+var useCache = !isDev;
+var cacheTTL = config.cacheTTL;
+var cache = {};
 
 function render(req, res, data, context) {
-    var query = req.query,
-        user = req.user,
-        cacheKey = req.url + (context ? JSON.stringify(context) : '') + (user ? JSON.stringify(user) : ''),
-        cached = cache[cacheKey];
+    var query = req.query;
+    var user = req.user;
+    var cacheKey = req.url + (context ? JSON.stringify(context) : '') + (user ? JSON.stringify(user) : '');
+    var cached = cache[cacheKey];
 
     if (useCache && cached && (new Date() - cached.timestamp < cacheTTL)) {
         return res.send(cached.html);

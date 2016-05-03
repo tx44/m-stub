@@ -9,8 +9,9 @@
     "node": ">=0.12"
   },
   "dependencies": {
-    "bower": "^1.7.9",
     "body-parser": "^1.13.3",
+    "bower": "^1.7.9",
+    "compression": "^1.6.1",
     "express": "^4.13.4",
     "morgan": "^1.6.1"
   },
